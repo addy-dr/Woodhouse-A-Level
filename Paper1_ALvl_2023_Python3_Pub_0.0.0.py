@@ -24,34 +24,34 @@ class Dastan: #Board Game
     def __DisplayBoard(self): #Render the board
         print("\n" + "   ", end="")
         for Column in range(1, self._NoOfColumns + 1): #render columns - COULD BE MADE MORE EFFICENT
-            print(str(Column) + "  ", end="") #render column numbers
+            print(str(Column) + "  ", end="")
         print("\n" + "  ", end="")
         for Count in range(1, self._NoOfColumns + 1): 
-            print("---", end="") #top of the board
+            print("---", end="")
         print("-")
-        for Row in range(1, self._NoOfRows + 1): #For each row, render the column graphic
-            print(str(Row) + " ", end="") #first render the number
+        for Row in range(1, self._NoOfRows + 1):
+            print(str(Row) + " ", end="")
             for Column in range(1, self._NoOfColumns + 1):
                 Index = self.__GetIndexOfSquare(Row * 10 + Column)
-                print("|" + self._Board[Index].GetSymbol(), end="") #Render - the GetSymbol function here returns an empty space
-                PieceInSquare = self._Board[Index].GetPieceInSquare() #find piece in square
-                if PieceInSquare is None: #Render the symbol - returns piece symbol
+                print("|" + self._Board[Index].GetSymbol(), end="")
+                PieceInSquare = self._Board[Index].GetPieceInSquare()
+                if PieceInSquare is None:
                     print(" ", end="")
                 else:
-                    print(PieceInSquare.GetSymbol(), end="") #dont render
-            print("|") #close the column
+                    print(PieceInSquare.GetSymbol(), end="")
+            print("|")
         print("  -", end="")
         for Column in range(1, self._NoOfColumns + 1):
-            print("---", end="") #finally, close the board
-        print() # 2 empty newlines - could be more efficent by instead calling print("\n\n")
+            print("---", end="")
+        print()
         print()
 
     def __DisplayState(self):
         self.__DisplayBoard()
-        print("Move option offer: " + self._MoveOptionOffer[self._MoveOptionOfferPosition]) #?
+        print("Move option offer: " + self._MoveOptionOffer[self._MoveOptionOfferPosition])
         print()
         print(self._CurrentPlayer.GetPlayerStateAsString())
-        print("Turn: " + self._CurrentPlayer.GetName()) #current player's turn
+        print("Turn: " + self._CurrentPlayer.GetName())
         print()
 
     def __GetIndexOfSquare(self, SquareReference):
